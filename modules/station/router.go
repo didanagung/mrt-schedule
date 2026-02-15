@@ -64,6 +64,18 @@ func CheckScheduleByStation(c *gin.Context, service Service) {
 		return
 	}
 
+	if datas == nil {
+		c.JSON(
+			http.StatusNotFound,
+			response.APIResponse{
+				Success: false,
+				Message: "data not found.",
+				Data:    nil,
+			},
+		)
+		return
+	}
+
 	// return response
 	c.JSON(
 		http.StatusOK,
